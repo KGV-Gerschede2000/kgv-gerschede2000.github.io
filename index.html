@@ -10,7 +10,6 @@
     <link href="https://googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
-        /* Grüner Farbverlauf im Hintergrund */
         body {
             font-family: 'Open Sans', sans-serif;
             background: linear-gradient(135deg, #a3b899 0%, #4d6842 50%, #223a1a 100%);
@@ -20,7 +19,6 @@
             padding: 20px;
         }
 
-        /* Der obere Briefkopf - transparent-weiß mit dunkler Schrift */
         .header-bereich {
             max-width: 1100px;
             margin: 0 auto 20px auto;
@@ -52,7 +50,6 @@
             color: #4d6842;
         }
 
-        /* Haupt-Layout mit drei Spalten: Menü (230px), Ranken-Trennlinie (40px), Inhalt (Rest) */
         .haupt-layout {
             max-width: 1100px;
             margin: 0 auto;
@@ -61,7 +58,6 @@
             gap: 10px;
         }
 
-        /* Linker Menübereich */
         .sidebar-menue {
             background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(10px);
@@ -80,7 +76,6 @@
             text-align: center;
         }
 
-        /* Die Themenknöpfe */
         .menue-knopf {
             display: block;
             background: rgba(255, 255, 255, 0.9);
@@ -92,14 +87,15 @@
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            cursor: pointer;
         }
 
-        .menue-knopf:hover {
+        .menue-knopf:hover, .menue-knopf.aktiv {
             background: #dcedc8;
-            transform: translateX(-3px);
+            color: #223a1a;
+            transform: translateX(3px);
         }
 
-        /* NEU: Die vertikale Rankblumen-Trennlinie */
         .ranken-trenner {
             display: flex;
             flex-direction: column;
@@ -108,10 +104,9 @@
             font-size: 1.4rem;
             padding: 10px 0;
             opacity: 0.85;
-            user-select: none; /* Verhindert das versehentliche Markieren der Emojis */
+            user-select: none;
         }
 
-        /* Rechter Inhaltsbereich */
         .inhalt-kachel {
             background: rgba(255, 255, 255, 0.95);
             color: #333;
@@ -141,12 +136,20 @@
             margin-top: 0;
         }
 
-        p {
+        p, li {
             font-size: 1.05rem;
             color: #444;
+            line-height: 1.6;
         }
 
-        /* Für Handys: Da der Platz flach wird, verstecken wir die vertikale Ranke und stapeln das Layout sauber */
+        .seite-inhalt {
+            display: none;
+        }
+        
+        .seite-inhalt.aktiv {
+            display: block;
+        }
+
         @media (max-width: 768px) {
             .haupt-layout {
                 grid-template-columns: 1fr;
@@ -159,54 +162,94 @@
 </head>
 <body>
 
-    <!-- Briefkopf oben -->
     <div class="header-bereich">
         <div class="vereinsname">Kleingartenverein Gerschede 2000 e.V.</div>
         <span class="vereinsnummer">(VR: 10318)</span>
         <div class="verband-info">Mitglied des Stadtverbandes Essen der Kleingartenvereine e.V. ( Nr. 092 )</div>
     </div>
 
-    <!-- Hauptbereich -->
     <div class="haupt-layout">
         
-        <!-- Links: Die Sidebar -->
         <div class="sidebar-menue">
             <h3>Navigation</h3>
-            <a href="#" class="menue-knopf">🏡 Startseite</a>
-            <a href="#" class="menue-knopf">📅 Termine & Feste</a>
-            <a href="#" class="menue-knopf">📋 Downloads & Recht</a>
-            <a href="#" class="menue-knopf">🌱 Freie Gärten</a>
-            <a href="#" class="menue-knopf">📸 Galerie</a>
-            <a href="#" class="menue-knopf">⚖️ Impressum</a>
+            <div class="menue-knopf aktiv" onclick="zeigeSeite('startseite')">🏡 Startseite</div>
+            <div class="menue-knopf" onclick="zeigeSeite('termine')">📅 Termine & Feste</div>
+            <div class="menue-knopf" onclick="zeigeSeite('downloads')">📋 Downloads & Recht</div>
+            <div class="menue-knopf" onclick="zeigeSeite('gaerten')">🌱 Freie Gärten</div>
+            <div class="menue-knopf" onclick="zeigeSeite('galerie')">📸 Galerie</div>
+            <div class="menue-knopf" onclick="zeigeSeite('impressum')">⚖️ Impressum</div>
         </div>
 
-        <!-- Mitte: Die neue Rankblumen-Trennlinie -->
         <div class="ranken-trenner">
-            <span>🌿</span>
-            <span>🌸</span>
-            <span>🌿</span>
-            <span>🌺</span>
-            <span>🌿</span>
-            <span>🌸</span>
-            <span>🌿</span>
+            <span>🌿</span><span>🌸</span><span>🌿</span><span>🌺</span><span>🌿</span><span>🌸</span><span>🌿</span>
         </div>
 
-        <!-- Rechts: Der Inhalt -->
         <div class="inhalt-kachel">
-            <div class="willkommens-balken">
-                <span>🌿</span>
-                <span>Herzlich willkommen auf unserer neuen Webseite!</span>
-                <span>🌿</span>
+            
+            <div id="startseite" class="seite-inhalt aktiv">
+                <div class="willkommens-balken">
+                    <span>🌿</span><span>Herzlich willkommen auf unserer neuen Webseite!</span><span>🌿</span>
+                </div>
+                <h2>Über unseren Verein</h2>
+                <p>Hier entsteht die offizielle Internetpräsenz des KGV Gerschede 2000 e.V. Wir arbeiten fleißig daran, Ihnen hier bald alle Termine, Formulare und Neuigkeiten rund um unsere Kleingartenanlage in Essen-Gerschede bereitzustellen.</p>
+                <h2>Aktuelles</h2>
+                <p>Die Seite befindet sich aktuell im Aufbau durch den Vorstand. Schauen Sie bald wieder vorbei!</p>
             </div>
 
-            <h2>Über unseren Verein</h2>
-            <p>Hier entsteht in Kürze die offizielle Internetpräsenz des KGV Gerschede 2000 e.V. Wir arbeiten fleißig daran, Ihnen hier bald alle Termine, Formulare und Neuigkeiten rund um unsere Kleingartenanlage in Essen-Gerschede bereitzustellen.</p>
-            
-            <h2>Aktuelles</h2>
-            <p>Die Seite befindet sich aktuell im Aufbau durch den Vorstand. Schauen Sie bald wieder vorbei!</p>
+            <div id="termine" class="seite-inhalt">
+                <h2>Termine & Feste</h2>
+                <p>Hier finden Sie alle wichtigen Termine für das aktuelle Gartenjahr:</p>
+                <ul>
+                    <li><strong>Gemeinschaftsarbeit:</strong> Die Termine für die nächste Saison werden hier in Kürze bekannt gegeben.</li>
+                    <li><strong>Vorstandssprechstunde:</strong> Jeden 1. Samstag im Monat im Vereinsheim.</li>
+                    <li><strong>Sommerfest:</strong> Planung folgt!</li>
+                </ul>
+            </div>
+
+            <div id="downloads" class="seite-inhalt">
+                <h2>Downloads & Rechtliches</h2>
+                <p>Wichtige Dokumente für unsere Vereinsmitglieder und Interessenten zum Herunterladen:</p>
+                <ul>
+                    <li><a href="#" target="_blank">Vereinssatzung (PDF)</a></li>
+                    <li><a href="#" target="_blank">Rahmenkleingartenordnung des Landesverbandes NRW (PDF)</a></li>
+                    <li><a href="#" target="_blank">Antrag auf Mitgliedschaft / Bewerberbogen (PDF)</a></li>
+                </ul>
+            </div>
+
+            <div id="gaerten" class="seite-inhalt">
+                <h2>Freie Gärten & Bewerbung</h2>
+                <p>Sie haben Interesse an einem eigenen Kleingarten in Essen-Gerschede?</p>
+                <p>Aktuell sind alle unsere Parzellen vergeben. Sie können sich jedoch gerne auf unsere Warteliste setzen lassen. Nutzen Sie dazu bitte das Bewerbungsformular im Download-Bereich oder kommen Sie zur Vorstandssprechstunde vorbei.</p>
+            </div>
+
+            <div id="galerie" class="seite-inhalt">
+                <h2>Impressionen aus der Anlage</h2>
+                <p>Hier finden Sie bald schöne Schnappschüsse und Eindrücke aus unserer Kleingartenanlage.</p>
+                <p><em>(Bildergalerie befindet sich im Aufbau)</em></p>
+            </div>
+
+            <div id="impressum" class="seite-inhalt">
+                <h2>Impressum</h2>
+                <p><strong>Kleingartenverein Gerschede 2000 e.V.</strong><br>
+                Vereinsregister-Nr: VR 10318 (Amtsgericht Essen)<br>
+                Mitglied des Stadtverbandes Essen der Kleingartenvereine e.V. (Nr. 092)</p>
+                
+                <p><strong>Vertreten durch den Vorstand:</strong><br>
+                1. Vorsitzender: Sascha Rosteck<br>
+                2. Vorsitzender: Uwe Jochem<br>
+                Kassierer: Frank Koziol</p>
+                
+                <h2>Datenschutzerklärung</h2>
+                <p>Diese Webseite dient reinen Informationszwecken des Vereins. Es werden keine personenbezogenen Daten von Besuchern erhoben, gespeichert oder ausgewertet (keine Cookies, kein Kontaktformular, kein Tracking).</p>
+            </div>
+
         </div>
 
     </div>
 
+    <!-- Hier binden wir das separate Skript ein -->
+    <script src="skript.js"></script>
+
 </body>
 </html>
+
