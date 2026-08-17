@@ -5,104 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kleingartenverein Gerschede 2000 e.V.</title>
     
-    <!-- Einbindung einer geschwungenen Schriftart (ähnlich wie Ihr Briefkopf) -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
-        /* Grunddesign der Seite */
         body {
             font-family: 'Open Sans', sans-serif;
-            background-color: #f9f9f9;
+            background: linear-gradient(135deg, #a3b899 0%, #4d6842 50%, #223a1a 100%);
+            background-attachment: fixed;
             color: #333;
             margin: 0;
-            padding: 20px;
+            padding: 10px;
         }
 
         .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            max-width: 900px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.96);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
 
-        /* Der offizielle Briefkopf-Stil */
-        .briefkopf {
-            border: 2px solid #000;
-            padding: 10px;
+        .header-bereich {
             text-align: center;
-            margin-bottom: 30px;
+            padding-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .vereinsname {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: bold;
-            margin: 10px 0;
+            color: #223a1a;
+            margin: 10px 0 5px 0;
+            line-height: 1.1;
         }
 
         .vereinsnummer {
-            font-family: 'Open Sans', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-style: italic;
+            color: #555;
+            display: block;
+            margin-bottom: 10px;
         }
 
-        .untertitel {
-            border-top: 2px solid #000;
-            border-bottom: 2px solid #000;
-            padding: 8px 0;
-            font-size: 1.3rem;
+        .verband-info {
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
             font-weight: 600;
-            margin: 15px 0;
+            color: #4d6842;
+            margin-bottom: 20px;
         }
 
-        /* Die Info-Box für den Vorstand */
-        .vorstand-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+        /* NEU: Das grüne Navigationsmenü */
+        .navigation {
+            display: flex;
+            justify-content: center;
+            background-color: #4d6842;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 25px;
             gap: 15px;
-            font-size: 0.9rem;
-            text-align: left;
-            padding-bottom: 15px;
         }
 
-        .vorstand-posten {
-            font-weight: bold;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 3px;
-            margin-bottom: 5px;
-        }
-
-        /* Grüner Balken mit Bäumen-Deko-Platzhalter */
-        .deko-balken {
-            border: 2px solid #000;
-            padding: 15px;
-            font-size: 1.4rem;
+        .navigation a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
             font-weight: 600;
-            background-color: #ffffff;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .navigation a:hover {
+            background-color: #223a1a;
+        }
+
+        .willkommens-balken {
+            background-color: #f1f6f0;
+            border-left: 5px solid #4d6842;
+            padding: 15px;
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            font-weight: 600;
+            color: #223a1a;
             margin-top: 15px;
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
+            gap: 15px;
+            border-radius: 4px;
         }
 
         .baum-emoji {
-            font-size: 2rem;
-            color: #2e7d32;
+            font-size: 1.6rem;
         }
 
-        /* Hauptinhalt der Webseite */
         .inhalt {
-            margin-top: 40px;
+            margin-top: 30px;
             line-height: 1.6;
         }
 
         h2 {
-            color: #2e7d32;
-            border-bottom: 2px solid #2e7d32;
+            color: #4d6842;
+            border-bottom: 2px solid #a3b899;
             padding-bottom: 5px;
+            font-size: 1.5rem;
+        }
+
+        p {
+            font-size: 1.05rem;
+            color: #444;
         }
     </style>
 </head>
@@ -110,49 +123,26 @@
 
 <div class="container">
 
-    <!-- Briefkopf Start -->
-    <div class="briefkopf">
-        <div class="vereinsname">
-            Kleingartenverein Gerschede 2000 e.V. <span class="vereinsnummer">(VR: 10318)</span>
-        </div>
-        
-        <div class="untertitel">
-            Mitglied des Stadtverbandes Essen der Kleingartenvereine e.V. ( Nr. 092 )
-        </div>
-
-        <div class="vorstand-grid">
-            <div>
-                <div class="vorstand-posten">1. Vorsitzender:</div>
-                Sascha Rosteck<br>
-                Am Barchembach 2A<br>
-                46117 Oberhausen<br>
-                Mobil: 0170-7749007
-            </div>
-            <div>
-                <div class="vorstand-posten">2. Vorsitzender:</div>
-                Uwe Jochem<br>
-                Fleuenbruch 48<br>
-                45355 Essen<br>
-                Mobil: 0157-8782506
-            </div>
-            <div>
-                <div class="vorstand-posten">Kassierer:</div>
-                Frank Koziol<br>
-                Bessemer Str. 12<br>
-                45355 Essen<br>
-                Mobil: 0176-4358512
-            </div>
-        </div>
-
-        <div class="deko-balken">
-            <span class="baum-emoji">🌳</span>
-            <span>Herzlich willkommen auf unserer neuen Webseite!</span>
-            <span class="baum-emoji">🌳</span>
-        </div>
+    <div class="header-bereich">
+        <div class="vereinsname">Kleingartenverein Gerschede 2000 e.V.</div>
+        <span class="vereinsnummer">(VR: 10318)</span>
+        <div class="verband-info">Mitglied des Stadtverbandes Essen der Kleingartenvereine e.V. ( Nr. 092 )</div>
     </div>
-    <!-- Briefkopf Ende -->
 
-    <!-- Hier kommt der eigentliche Inhalt der Seite hin -->
+    <!-- Navigationsleiste -->
+    <div class="navigation">
+        <a href="#">Startseite</a>
+        <a href="#">Termine</a>
+        <a href="#">Downloads</a>
+        <a href="#">Impressum</a>
+    </div>
+
+    <div class="willkommens-balken">
+        <span class="baum-emoji">🌳</span>
+        <span>Herzlich willkommen auf unserer neuen Webseite!</span>
+        <span class="baum-emoji">🌳</span>
+    </div>
+
     <div class="inhalt">
         <h2>Über unseren Verein</h2>
         <p>Hier entsteht in Kürze die offizielle Internetpräsenz des KGV Gerschede 2000 e.V. Wir arbeiten fleißig daran, Ihnen hier bald alle Termine, Formulare und Neuigkeiten rund um unsere Kleingartenanlage in Essen-Gerschede bereitzustellen.</p>
