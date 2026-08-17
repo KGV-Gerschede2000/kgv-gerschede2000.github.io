@@ -10,148 +10,203 @@
     <link href="https://googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
+        /* Grüner Farbverlauf im Hintergrund */
         body {
             font-family: 'Open Sans', sans-serif;
             background: linear-gradient(135deg, #a3b899 0%, #4d6842 50%, #223a1a 100%);
             background-attachment: fixed;
-            color: #333;
+            color: #fff;
             margin: 0;
-            padding: 10px;
+            padding: 20px;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            background: rgba(255, 255, 255, 0.96);
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
+        /* Der obere Briefkopf - transparent-weiß mit dunkler Schrift */
         .header-bereich {
+            max-width: 1100px;
+            margin: 0 auto 20px auto;
+            background: rgba(255, 255, 255, 0.92);
+            color: #223a1a;
+            padding: 20px;
+            border-radius: 12px;
             text-align: center;
-            padding-bottom: 20px;
-            margin-bottom: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
 
         .vereinsname {
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: bold;
-            color: #223a1a;
-            margin: 10px 0 5px 0;
-            line-height: 1.1;
+            margin: 0 0 5px 0;
         }
 
         .vereinsnummer {
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-style: italic;
             color: #555;
-            display: block;
-            margin-bottom: 10px;
         }
 
         .verband-info {
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            font-size: clamp(0.85rem, 2vw, 1rem);
             font-weight: 600;
+            margin-top: 5px;
             color: #4d6842;
-            margin-bottom: 20px;
         }
 
-        /* NEU: Das grüne Navigationsmenü */
-        .navigation {
-            display: flex;
-            justify-content: center;
-            background-color: #4d6842;
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            gap: 15px;
+        /* Haupt-Layout mit drei Spalten: Menü (230px), Ranken-Trennlinie (40px), Inhalt (Rest) */
+        .haupt-layout {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 230px 40px 1fr; 
+            gap: 10px;
         }
 
-        .navigation a {
-            color: white;
+        /* Linker Menübereich */
+        .sidebar-menue {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            align-self: start;
+        }
+
+        .sidebar-menue h3 {
+            margin-top: 0;
+            color: #dcedc8;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 8px;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        /* Die Themenknöpfe */
+        .menue-knopf {
+            display: block;
+            background: rgba(255, 255, 255, 0.9);
+            color: #223a1a;
             text-decoration: none;
-            padding: 8px 16px;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
             font-weight: 600;
-            border-radius: 4px;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        .navigation a:hover {
-            background-color: #223a1a;
+        .menue-knopf:hover {
+            background: #dcedc8;
+            transform: translateX(-3px);
+        }
+
+        /* NEU: Die vertikale Rankblumen-Trennlinie */
+        .ranken-trenner {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            font-size: 1.4rem;
+            padding: 10px 0;
+            opacity: 0.85;
+            user-select: none; /* Verhindert das versehentliche Markieren der Emojis */
+        }
+
+        /* Rechter Inhaltsbereich */
+        .inhalt-kachel {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
 
         .willkommens-balken {
             background-color: #f1f6f0;
             border-left: 5px solid #4d6842;
             padding: 15px;
-            font-size: clamp(1rem, 3vw, 1.3rem);
+            font-size: 1.1rem;
             font-weight: 600;
             color: #223a1a;
-            margin-top: 15px;
+            margin-bottom: 25px;
             display: flex;
-            justify-content: center;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
             border-radius: 4px;
-        }
-
-        .baum-emoji {
-            font-size: 1.6rem;
-        }
-
-        .inhalt {
-            margin-top: 30px;
-            line-height: 1.6;
         }
 
         h2 {
             color: #4d6842;
             border-bottom: 2px solid #a3b899;
             padding-bottom: 5px;
-            font-size: 1.5rem;
+            margin-top: 0;
         }
 
         p {
             font-size: 1.05rem;
             color: #444;
         }
+
+        /* Für Handys: Da der Platz flach wird, verstecken wir die vertikale Ranke und stapeln das Layout sauber */
+        @media (max-width: 768px) {
+            .haupt-layout {
+                grid-template-columns: 1fr;
+            }
+            .ranken-trenner {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-
+    <!-- Briefkopf oben -->
     <div class="header-bereich">
         <div class="vereinsname">Kleingartenverein Gerschede 2000 e.V.</div>
         <span class="vereinsnummer">(VR: 10318)</span>
         <div class="verband-info">Mitglied des Stadtverbandes Essen der Kleingartenvereine e.V. ( Nr. 092 )</div>
     </div>
 
-    <!-- Navigationsleiste -->
-    <div class="navigation">
-        <a href="#">Startseite</a>
-        <a href="#">Termine</a>
-        <a href="#">Downloads</a>
-        <a href="#">Impressum</a>
-    </div>
-
-    <div class="willkommens-balken">
-        <span class="baum-emoji">🌳</span>
-        <span>Herzlich willkommen auf unserer neuen Webseite!</span>
-        <span class="baum-emoji">🌳</span>
-    </div>
-
-    <div class="inhalt">
-        <h2>Über unseren Verein</h2>
-        <p>Hier entsteht in Kürze die offizielle Internetpräsenz des KGV Gerschede 2000 e.V. Wir arbeiten fleißig daran, Ihnen hier bald alle Termine, Formulare und Neuigkeiten rund um unsere Kleingartenanlage in Essen-Gerschede bereitzustellen.</p>
+    <!-- Hauptbereich -->
+    <div class="haupt-layout">
         
-        <h2>Aktuelles</h2>
-        <p>Die Seite befindet sich aktuell im Aufbau durch den Vorstand. Schauen Sie bald wieder vorbei!</p>
-    </div>
+        <!-- Links: Die Sidebar -->
+        <div class="sidebar-menue">
+            <h3>Navigation</h3>
+            <a href="#" class="menue-knopf">🏡 Startseite</a>
+            <a href="#" class="menue-knopf">📅 Termine & Feste</a>
+            <a href="#" class="menue-knopf">📋 Downloads & Recht</a>
+            <a href="#" class="menue-knopf">🌱 Freie Gärten</a>
+            <a href="#" class="menue-knopf">📸 Galerie</a>
+            <a href="#" class="menue-knopf">⚖️ Impressum</a>
+        </div>
 
-</div>
+        <!-- Mitte: Die neue Rankblumen-Trennlinie -->
+        <div class="ranken-trenner">
+            <span>🌿</span>
+            <span>🌸</span>
+            <span>🌿</span>
+            <span>🌺</span>
+            <span>🌿</span>
+            <span>🌸</span>
+            <span>🌿</span>
+        </div>
+
+        <!-- Rechts: Der Inhalt -->
+        <div class="inhalt-kachel">
+            <div class="willkommens-balken">
+                <span>🌿</span>
+                <span>Herzlich willkommen auf unserer neuen Webseite!</span>
+                <span>🌿</span>
+            </div>
+
+            <h2>Über unseren Verein</h2>
+            <p>Hier entsteht in Kürze die offizielle Internetpräsenz des KGV Gerschede 2000 e.V. Wir arbeiten fleißig daran, Ihnen hier bald alle Termine, Formulare und Neuigkeiten rund um unsere Kleingartenanlage in Essen-Gerschede bereitzustellen.</p>
+            
+            <h2>Aktuelles</h2>
+            <p>Die Seite befindet sich aktuell im Aufbau durch den Vorstand. Schauen Sie bald wieder vorbei!</p>
+        </div>
+
+    </div>
 
 </body>
 </html>
